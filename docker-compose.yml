@@ -10,20 +10,58 @@ services:
     ports:
       - "25565:25565"
     environment:
-      # ESSENTIALS
+      # --- ESSENTIALS ---
       EULA: "TRUE"
       VERSION: "1.21.10"
       TYPE: "FORGE"
       JAVA_VERSION: "21"
       MEMORY: "4G"
 
-      # TLAUNCHER
+      # --- TLAUNCHER ---
       ONLINE_MODE: "FALSE"
 
-      # GAME SETTINGS
+      # --- GAMEPLAY SETTINGS ---
+
+      # The message shown in the server list
       MOTD: "HelloWorldSMP"
-      DIFFICULTY: "normal"
+
+      # Difficulty
+      # Options: peaceful, easy, normal, hard
+      DIFFICULTY: "peaceful"
+
+      # Game Mode
+      # Options: survival, creative, adventure, spectator
+      MODE: "survival"
+
+      # Player vs Player Damage
+      # Options: true (enabled), false (disabled)
+      PVP: "true"
+
+      # Maximum number of players allowed
       MAX_PLAYERS: 10
+
+      # View Distance (Chunks)
+      # Options: 10 (standard), lower for less lag (6-8), higher for better view (12+)
+      VIEW_DISTANCE: "10"
+
+      # Simulation Distance (Chunks)
+      # How far away machines/farms keep working.
+      SIMULATION_DISTANCE: "10"
+
+      # --- SERVER RULES (Not World Gen) ---
+
+      # World Folder Name
+      # Use this if you rename your folder from "world" to something else
+      LEVEL: "world"
+
+      # Spawn Protection
+      # Radius of blocks around spawn that non-OPs cannot break. 
+      # Set to "0" to disable protection.
+      SPAWN_PROTECTION: "16"
+
+      # Allow Flight
+      # Options: true, false. (Set to true if using mods that add flying/jetpacks)
+      ALLOW_FLIGHT: "false"
 
     volumes:
       - ./data:/data
