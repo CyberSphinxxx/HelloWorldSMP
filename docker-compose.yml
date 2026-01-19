@@ -1,0 +1,42 @@
+version: "3.8"
+services:
+  # -------------------------
+  # 1. THE MINECRAFT SERVER
+  # -------------------------
+  mc:
+    image: itzg/minecraft-server:java21
+    container_name: mc
+    # Ports are kept here so you can still join via standard localhost
+    ports:
+      - "25565:25565"
+    environment:
+      # ESSENTIALS
+      EULA: "TRUE"
+      VERSION: "1.21.10"
+      TYPE: "FORGE"
+      JAVA_VERSION: "21"
+      MEMORY: "4G"
+
+      # TLAUNCHER
+      ONLINE_MODE: "FALSE"
+
+      # GAME SETTINGS
+      MOTD: "HelloWorldSMP"
+      DIFFICULTY: "normal"
+      MAX_PLAYERS: 10
+
+    volumes:
+      - ./data:/data
+    restart: unless-stopped
+
+  # -------------------------
+  # 2. THE PLAYIT TUNNEL
+  # -------------------------
+  playit:
+    image: ghcr.io/playit-cloud/playit-agent:latest
+    container_name: playit
+    # THIS IS THE FIX: Glues this container to the 'mc' network
+    network_mode: service:mc
+    environment:
+      SECRET_KEY: "8aa686ca7ee889db20d55ea3f39e841a06eb97e730e3989c50f82143355cdb40"
+    restart: unless-stopped

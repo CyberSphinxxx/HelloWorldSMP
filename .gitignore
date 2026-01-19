@@ -1,0 +1,10 @@
+# Minecraft server data
+data/
+
+# Playit agent data (if any)
+playit_data/
+
+# System files
+Thumbs.db
+Desktop.ini
+.DS_Store
