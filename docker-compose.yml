@@ -27,7 +27,7 @@ services:
 
       # Difficulty
       # Options: peaceful, easy, normal, hard
-      DIFFICULTY: "peaceful"
+      DIFFICULTY: "normal"
 
       # Game Mode
       # Options: survival, creative, adventure, spectator
