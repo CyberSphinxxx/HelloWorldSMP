@@ -73,7 +73,7 @@ services:
   playit:
     image: ghcr.io/playit-cloud/playit-agent:latest
     container_name: playit
-    # THIS IS THE FIX: Glues this container to the 'mc' network
+    # Put your own secret key from playit.gg
     network_mode: service:mc
     environment:
       SECRET_KEY: "8aa686ca7ee889db20d55ea3f39e841a06eb97e730e3989c50f82143355cdb40"
